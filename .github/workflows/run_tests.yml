@@ -1,4 +1,4 @@
-name: Run Tests on Windows
+name: Run Python tests and perform snyk scan
 
 on:
   push:
@@ -32,6 +32,9 @@ jobs:
 
       - name: Authenticate Snyk 
         run: snyk auth 6d28fbab-8f90-4df6-929c-6f1f8fcf838d
+
+      - name: Install Python Dependencies from requirements.txt
+ 	run: pip install -r requirements.txt
 
       - name: Run Snyk tests
         run: snyk test
