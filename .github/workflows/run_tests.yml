@@ -35,7 +35,7 @@ jobs:
 
       - name: Build Docker Image
         run: docker build -t sample-backend:latest .
-        working-directory: ${{ github.workspace }}/Graticule_assignment
+        working-directory: ${{ github.workspace }}
 
       - name: Run Snyk Docker Scan
         run: snyk container sample-backend:latest
