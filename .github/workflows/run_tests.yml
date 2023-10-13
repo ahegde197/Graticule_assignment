@@ -33,7 +33,7 @@ jobs:
       - name: Authenticate Snyk
         run: snyk auth $SNYK_TOKEN
 
-      - name: Install Python Dependencies
+      - name: Install Python Dependencies for Snyk monitor
         run: pip install -r requirements.txt
 
       - name: Install and Run Snyk Scan
@@ -54,4 +54,4 @@ jobs:
         run: snyk container sample-backend:latest
 
       - name: Monitor Snyk Results
-        run: DEBUG=*snyk* snyk monitor --all-projects
+        run: snyk monitor --all-projects

@@ -11,7 +11,7 @@ COPY service/__init__.py service/main.py ./service/
 
 RUN apt update && apt upgrade -y
 
-#Installing the below packages as root user
+#Switching to Root to install the below two system wide packages
 USER root
 RUN pip install --no-cache-dir --upgrade pip setuptools
 RUN pip install --no-cache-dir uvicorn
