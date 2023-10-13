@@ -16,27 +16,24 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9  
+          python-version: 3.9
 
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Install Python Dependencies
         run: pip install -e '.[dev]'
 
       - name: Run Tests
-        run: pytest service 
+        run: pytest service
 
       - name: Install Snyk CLI
-        run: npm install -g snyk
+        run: pip install snyk
 
-      - name: Authenticate Snyk 
-        run: snyk auth 6d28fbab-8f90-4df6-929c-6f1f8fcf838d
+      - name: Authenticate Snyk
+        run: snyk auth $SNYK_TOKEN
 
-      - name: Install Python Dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run Snyk Scan
+      - name: Install and Run Snyk Scan
         run: |
           snyk test
           SNYK_EXIT_CODE=$?
