@@ -28,7 +28,7 @@ jobs:
         run: pytest service
 
       - name: Install Snyk CLI
-        run: pip install snyk
+        run: npm install -g snyk
 
       - name: Authenticate Snyk
         run: snyk auth $SNYK_TOKEN
