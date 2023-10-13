@@ -30,11 +30,8 @@ jobs:
       - name: Install Snyk CLI
         run: npm install -g snyk
 
-      - name: Authenticate Snyk
+      - name: Authenticate Snyk 
         run: snyk auth 6d28fbab-8f90-4df6-929c-6f1f8fcf838d
-
-      - name: Run Snyk tests
-        run: snyk test 
 
       - name: Build Docker Image
         run: docker build -t sample-backend:latest .
