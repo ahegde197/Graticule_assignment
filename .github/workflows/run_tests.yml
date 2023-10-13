@@ -31,7 +31,7 @@ jobs:
         run: snyk test
 
       - name: Install Docker
-        run: |
+        run: 
         choco install docker-desktop
         choco install docker-cli
         shell: powershell
