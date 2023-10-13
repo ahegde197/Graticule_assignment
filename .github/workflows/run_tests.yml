@@ -1,4 +1,4 @@
-name: Run Python tests and perform snyk scan
+name: Run Python tests and perform Snyk scan
 
 on:
   push:
@@ -45,3 +45,13 @@ jobs:
 
       - name: Run Snyk Docker Scan
         run: snyk container sample-backend:latest
+
+      - name: Run Snyk Scan
+        run: |
+          snyk test
+          SNYK_EXIT_CODE=$?
+          if [ $SNYK_EXIT_CODE -eq 1 ]; then
+            echo "Snyk vulnerabilities found, but workflow will continue."
+            exit 0
+          fi
+        continue-on-error: true
