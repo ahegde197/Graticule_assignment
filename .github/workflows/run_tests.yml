@@ -23,3 +23,22 @@ jobs:
 
       - name: Run Tests
         run: pytest service 
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Run Snyk tests
+        run: snyk test
+
+      - name: Install Docker
+        run: |
+        choco install docker-desktop
+        choco install docker-cli
+        shell: powershell
+
+      - name: Build Docker Image
+        run: docker build -t sample-backend:latest .
+        working-directory: ${{ github.workspace }}/Graticule_assignment
+
+      - name: Run Snyk Docker Scan
+        run: snyk container sample-backend:latest
