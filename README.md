@@ -35,5 +35,11 @@ http://localhost:8001
 Please complete the following challenges. Once a challenge is completed, commit it with an appropriate comment so we can find your work. 
 
 1. The service provides an http endpoint - use the provided self-signed certificate and key (in the `localhost-cert` directory) to create an https endoint for the service. Update the README to describe how to do this and how to test that it works.
+
+To create an https endpoint, we need to run the below command
+ "uvicorn --app-dir service main:service --host 0.0.0.0 --port 443 --ssl-keyfile localhost-cert/key.pem --ssl-certfile localhost-cert/cert.pem" 
+This command should be run from the project dir where localhost-cert is located.
+Once we run it, we can test the service using the url https://localhost:443 (443 is the default port for https).
+
 1. By default, Docker containers run as root. Following the principle of least privilege, update the Dockerfile to run the service as a non-root user. 
 1. Create a GitHub Actions workflow to run tests on each commit to the main branch. 
