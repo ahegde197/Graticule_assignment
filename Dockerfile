@@ -1,5 +1,6 @@
 FROM python:3.9-slim-bullseye
 
+#creating a non root user "user1"
 RUN useradd -m -U -u 1000 user1
 
 WORKDIR /home/user1
@@ -9,10 +10,16 @@ RUN mkdir service
 COPY service/__init__.py service/main.py ./service/
 
 RUN apt update && apt upgrade -y
-USER user1
+
+#Installing the below packages as root user
+USER root
 RUN pip install --no-cache-dir --upgrade pip setuptools
+RUN pip install --no-cache-dir uvicorn
+
+USER user1
 RUN pip install --no-cache-dir --upgrade -e .
 
+#Changing the ownership to "user1"
 USER root
 RUN chown -R user1:user1 /home
 
