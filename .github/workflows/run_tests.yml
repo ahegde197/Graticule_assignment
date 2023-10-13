@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: windows-latest
 
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
     steps:
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -28,9 +31,7 @@ jobs:
         run: npm install -g snyk
 
       - name: Authenticate Snyk
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: snyk auth
+        run: snyk auth $SNYK_TOKEN
 
       - name: Run Snyk tests
         run: snyk test 
