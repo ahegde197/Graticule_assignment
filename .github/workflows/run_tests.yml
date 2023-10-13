@@ -52,3 +52,6 @@ jobs:
 
       - name: Run Snyk Docker Scan
         run: snyk container sample-backend:latest
+
+      - name: Monitor Snyk Results
+        run: snyk monitor --all-projects
