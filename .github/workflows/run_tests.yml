@@ -33,6 +33,9 @@ jobs:
       - name: Authenticate Snyk
         run: snyk auth $SNYK_TOKEN
 
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+
       - name: Install and Run Snyk Scan
         run: |
           snyk test
