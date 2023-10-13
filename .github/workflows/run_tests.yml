@@ -31,7 +31,7 @@ jobs:
         run: npm install -g snyk
 
       - name: Authenticate Snyk
-        run: snyk auth
+        run: snyk auth 6d28fbab-8f90-4df6-929c-6f1f8fcf838d
 
       - name: Run Snyk tests
         run: snyk test 
