@@ -17,4 +17,5 @@ RUN chown -R appuser:appuser /home
 
 USER appuser
 
+
 CMD uvicorn --app-dir service main:service --host 0.0.0.0 --port 8001
