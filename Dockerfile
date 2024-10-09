@@ -1,4 +1,4 @@
-FROM python:3.9-slim-bullseye
+FROM python:3.12.7-slim-bullseye
 
 #creating a non root user "user1"
 RUN useradd -m -U -u 1000 user1
